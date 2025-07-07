@@ -1,0 +1,5 @@
+{
+    "connectionString":
+        {"DefaultConnection":"Server=192.168.56.1;Database=Controlai;User=controlai;Password=C0ntr01@1;"
+        } 
+}

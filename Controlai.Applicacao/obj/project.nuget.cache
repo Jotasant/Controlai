@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E+oZg/4bArE=",
+  "success": true,
+  "projectFilePath": "C:\\CONTROLAI\\Controlai\\Controlai.Applicacao\\Controlai.Applicacao.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jeffe\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
