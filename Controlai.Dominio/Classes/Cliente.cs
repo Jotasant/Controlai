@@ -1,4 +1,4 @@
-﻿namespace Dominio.Models;
+﻿/*namespace Dominio.Models;
 
 
 public class Cliente
@@ -25,3 +25,4 @@ public class Cliente
     public string? CNPJ { get; set; }
 
 }
+*/
