@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Controlai.Dominio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+329660b9afd04e5bae10c3892629dd90f272f680")]
 [assembly: System.Reflection.AssemblyProductAttribute("Controlai.Dominio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Controlai.Dominio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
