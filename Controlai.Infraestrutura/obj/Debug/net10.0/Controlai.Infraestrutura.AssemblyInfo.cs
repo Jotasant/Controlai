@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Controlai.Infraestrutura")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+329660b9afd04e5bae10c3892629dd90f272f680")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b0cdc26bde4d203c9037d60c5d03c8d6f034f7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Controlai.Infraestrutura")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Controlai.Infraestrutura")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

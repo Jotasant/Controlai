@@ -16,6 +16,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         _conexaoRepo = conexaoRepo;
     }
 
+    
     public async void CadastrarUsuario(UsuarioSistema usuario)
     {
         if (string.IsNullOrEmpty(usuario.Usuario)) throw new Exception("Usuario Obrigatório");
@@ -26,11 +27,16 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         using var conn = _conexaoRepo.ObterConexao();
         conn.Open();
 
-        using var cmd = new MySqlCommand("");
- 
+        using var cmd = new MySqlCommand("INSERT INTO UsuarioSistema (Nome, isAdministrador, Usuario, DataDeCadastro, SenhaHash, Email) VALUES (@Nome, @isAdministrador, @Usuario, @DataDeCadastro, @SenhaHash, @Email)", conn);
+
     }
     public async void EditarUsuario(UsuarioSistema usuario)
     {
+        if (usuario.Id <= 0) throw new Exception("ID do usuário é obrigatório");
+
+        
+
+
         // Implementação do método para editar usuário
     }
     public async void ExcluirUsuario(int id)
@@ -45,7 +51,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     }
     public async Task<List<UsuarioSistema>> ObterPorNome(string nome)
     {
-        // Implementação do método para obter usuário por nome
+         // Implementação do método para obter usuário por nome
         return null; // Exemplo de retorno, deve ser implementado corretamente
     }
     public async Task<List<UsuarioSistema>> ObterPorPerfil(bool isAdministrador)

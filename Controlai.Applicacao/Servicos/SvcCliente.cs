@@ -10,7 +10,7 @@ namespace Controlai.Applicacao.Servicos
 
         string CadastrarCliente()
         {
-            
+            return null;
         }
         
     }
