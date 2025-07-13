@@ -25,9 +25,9 @@ public class SvcAutenticarUsuario
         var usuario = listUsuario.FirstOrDefault();
 
         if (usuario == null) throw new Exception("Usuário não encontrado");
-        if (usuario.SenhaHash == null) throw new Exception("Senha não encontrada");
+        if (usuario.Senha == null) throw new Exception("Senha não encontrada");
 
-        return SvcCryptSenha.VerificarHash(dtoUsuarioSistema.Senha, usuario.SenhaHash);
+        return SvcCryptSenha.VerificarHash(dtoUsuarioSistema.Senha, usuario.Senha);
     }
             
 }

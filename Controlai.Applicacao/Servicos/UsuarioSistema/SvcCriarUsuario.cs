@@ -16,7 +16,7 @@ public class SvcCriarUsuario
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterUsuario = obterusuario;
     }
-    public async Task CriarUsuario(DtoUsuarioSistema usuariodto)
+    public async Task<DtoUsuarioSistema> CriarUsuario(DtoUsuarioSistema usuariodto)
     {
         if (usuariodto.Usuario == null) throw new Exception("Nome de usuario Obrigatório");
         else if (usuariodto.Nome == null) throw new Exception("Nome obrigatório");
@@ -41,7 +41,22 @@ public class SvcCriarUsuario
                 DataDeCadastro = usuariodto.DataDeCadastro
             };
 
-            await _usuarioSistemaRepo.CadastrarUsuario(usuario);
+            var usuariocriado = await _usuarioSistemaRepo.CadastrarUsuario(usuario);
+            if (usuariocriado.Id == 0) throw new Exception("Usuario não foi criado!");
+
+            DtoUsuarioSistema usuarioDto = new DtoUsuarioSistema
+            (
+                Id: usuariocriado.Id,
+                Nome: usuariocriado.Nome!,
+                Usuario: usuariocriado.Usuario!,
+                Senha: usuariocriado.SenhaHash!,
+                Email: usuariocriado.Email!
+            )
+            {
+                isAdministrador = usuariocriado.isAdministrador,
+                DataDeCadastro = usuariocriado.DataDeCadastro
+            };
+            return usuarioDto;
         }
         else
         {

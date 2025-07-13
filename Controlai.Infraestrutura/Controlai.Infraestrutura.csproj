@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\Controlai.Applicacao\Controlai.Applicacao.csproj" />
+    <ProjectReference Include="..\Controlai.Dominio\Controlai.Dominio.csproj" />
   </ItemGroup>
 
   <ItemGroup>
