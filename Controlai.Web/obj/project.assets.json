@@ -15,15 +15,15 @@
           }
         }
       },
-      "MySqlConnector/2.4.0": {
+      "List/1.1.0": {
         "type": "package",
         "compile": {
-          "lib/net9.0/MySqlConnector.dll": {
+          "lib/net8.0/List.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/MySqlConnector.dll": {
+          "lib/net8.0/List.dll": {
             "related": ".xml"
           }
         }
@@ -53,23 +53,6 @@
         },
         "runtime": {
           "bin/placeholder/Controlai.Dominio.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Controlai.Infraestrutura/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Controlai.Applicacao": "1.0.0",
-          "MySqlConnector": "2.4.0"
-        },
-        "compile": {
-          "bin/placeholder/Controlai.Infraestrutura.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Controlai.Infraestrutura.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -109,33 +92,19 @@
         "readme.md"
       ]
     },
-    "MySqlConnector/2.4.0": {
-      "sha512": "78M+gVOjbdZEDIyXQqcA7EYlCGS3tpbUELHvn6638A2w0pkPI625ixnzsa5staAd3N9/xFmPJtkKDYwsXpFi/w==",
+    "List/1.1.0": {
+      "sha512": "5SDlZmKYBoBU5Rtm4nF2nYsoCsv+8oipKEPiACRDSh+NrrHvGtwVTfTSvnOJSU4M/qfhoi4It8DBU1VDecg9iw==",
       "type": "package",
-      "path": "mysqlconnector/2.4.0",
+      "path": "list/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
-        "lib/net462/MySqlConnector.dll",
-        "lib/net462/MySqlConnector.xml",
-        "lib/net471/MySqlConnector.dll",
-        "lib/net471/MySqlConnector.xml",
-        "lib/net48/MySqlConnector.dll",
-        "lib/net48/MySqlConnector.xml",
-        "lib/net6.0/MySqlConnector.dll",
-        "lib/net6.0/MySqlConnector.xml",
-        "lib/net8.0/MySqlConnector.dll",
-        "lib/net8.0/MySqlConnector.xml",
-        "lib/net9.0/MySqlConnector.dll",
-        "lib/net9.0/MySqlConnector.xml",
-        "lib/netstandard2.0/MySqlConnector.dll",
-        "lib/netstandard2.0/MySqlConnector.xml",
-        "lib/netstandard2.1/MySqlConnector.dll",
-        "lib/netstandard2.1/MySqlConnector.xml",
-        "logo.png",
-        "mysqlconnector.2.4.0.nupkg.sha512",
-        "mysqlconnector.nuspec"
+        "License.txt",
+        "ReadMe.md",
+        "lib/net8.0/List.dll",
+        "lib/net8.0/List.xml",
+        "list.1.1.0.nupkg.sha512",
+        "list.nuspec"
       ]
     },
     "Controlai.Applicacao/1.0.0": {
@@ -147,16 +116,12 @@
       "type": "project",
       "path": "../Controlai.Dominio/Controlai.Dominio.csproj",
       "msbuildProject": "../Controlai.Dominio/Controlai.Dominio.csproj"
-    },
-    "Controlai.Infraestrutura/1.0.0": {
-      "type": "project",
-      "path": "../Controlai.Infraestrutura/Controlai.Infraestrutura.csproj",
-      "msbuildProject": "../Controlai.Infraestrutura/Controlai.Infraestrutura.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Controlai.Infraestrutura >= 1.0.0"
+      "Controlai.Applicacao >= 1.0.0",
+      "list >= 1.1.0"
     ]
   },
   "packageFolders": {
@@ -191,8 +156,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\CONTROLAI\\Controlai\\Controlai.Infraestrutura\\Controlai.Infraestrutura.csproj": {
-              "projectPath": "C:\\CONTROLAI\\Controlai\\Controlai.Infraestrutura\\Controlai.Infraestrutura.csproj"
+            "C:\\CONTROLAI\\Controlai\\Controlai.Applicacao\\Controlai.Applicacao.csproj": {
+              "projectPath": "C:\\CONTROLAI\\Controlai\\Controlai.Applicacao\\Controlai.Applicacao.csproj"
             }
           }
         }
@@ -212,6 +177,12 @@
     "frameworks": {
       "net10.0": {
         "targetAlias": "net10.0",
+        "dependencies": {
+          "list": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
