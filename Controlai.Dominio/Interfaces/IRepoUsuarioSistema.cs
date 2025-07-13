@@ -3,9 +3,9 @@ namespace Dominio.Interfaces;
 using Dominio.Models;
 public interface IRepoUsuarioSistema
 {
-    void CadastrarUsuario(UsuarioSistema usuario);
-    void EditarUsuario(UsuarioSistema usuario);
-    void ExcluirUsuario(int id);
+    Task<UsuarioSistema> CadastrarUsuario(UsuarioSistema usuario);
+    Task<UsuarioSistema> EditarUsuario(UsuarioSistema usuario);
+    Task ExcluirUsuario(int id);
     Task<UsuarioSistema> ObterPorId(int id);
     Task<List<UsuarioSistema>> ObterPorNome(string nome);
     Task<List<UsuarioSistema>> ObterPorPerfil(bool isAdministrador);
