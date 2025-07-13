@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Infraestrutura.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("ConnectString.json", optional: false, reloadOnChange: true);
-
-builder.Services.AddScoped<Infraestrutura.Data.ConexaoRepo>();
 
 builder.Services.AddControllers();
 
