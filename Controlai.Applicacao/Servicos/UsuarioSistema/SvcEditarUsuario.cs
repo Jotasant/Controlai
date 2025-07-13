@@ -3,6 +3,7 @@ namespace Applicacao.Servicos;
 using System;
 using System.Threading.Tasks;
 using Applicacao.DTOs;
+using Applicacao.Interfaces;
 using Dominio.Interfaces;
 using Dominio.Models;
 
@@ -11,10 +12,10 @@ using Dominio.Models;
 public class SvcEditarUsuarioSistema
 {
     private readonly IRepoUsuarioSistema _usuarioSistemaRepo;
-    private readonly SvcObterUsuario _obterUsuario;
+    private readonly ISvcObterUsuario _obterUsuario;
 
 
-    public SvcEditarUsuarioSistema(IRepoUsuarioSistema usuarioSistemaRepo, SvcObterUsuario obterUsuario)
+    public SvcEditarUsuarioSistema(IRepoUsuarioSistema usuarioSistemaRepo, ISvcObterUsuario obterUsuario)
     {
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterUsuario = obterUsuario;

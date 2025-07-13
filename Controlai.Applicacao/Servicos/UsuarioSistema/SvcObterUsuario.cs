@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Applicacao.DTOs;
+using Applicacao.Interfaces;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Dominio.Enums;
 using System.Linq;
 
 
-public class SvcObterUsuario
+public class SvcObterUsuario : ISvcObterUsuario
 {
     
     private readonly IRepoUsuarioSistema _usuarioSistemaRepo;

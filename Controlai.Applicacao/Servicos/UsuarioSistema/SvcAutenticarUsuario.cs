@@ -4,14 +4,16 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Applicacao.DTOs;
+using Applicacao.Interfaces;
 using Dominio.Enums;
+
 
 
 public class SvcAutenticarUsuario
 {
-    private readonly SvcObterUsuario _obterusuario;
+    private readonly ISvcObterUsuario _obterusuario;
 
-    public SvcAutenticarUsuario (SvcObterUsuario svcObterUsuario)
+    public SvcAutenticarUsuario (ISvcObterUsuario svcObterUsuario)
     {
         _obterusuario = svcObterUsuario;
     }
