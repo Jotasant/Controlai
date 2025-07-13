@@ -28,6 +28,19 @@
           }
         }
       },
+      "MySqlConnector/2.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Controlai.Applicacao/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -53,6 +66,23 @@
         },
         "runtime": {
           "bin/placeholder/Controlai.Dominio.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Controlai.Infraestrutura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Controlai.Dominio": "1.0.0",
+          "MySqlConnector": "2.4.0"
+        },
+        "compile": {
+          "bin/placeholder/Controlai.Infraestrutura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Controlai.Infraestrutura.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -107,6 +137,35 @@
         "list.nuspec"
       ]
     },
+    "MySqlConnector/2.4.0": {
+      "sha512": "78M+gVOjbdZEDIyXQqcA7EYlCGS3tpbUELHvn6638A2w0pkPI625ixnzsa5staAd3N9/xFmPJtkKDYwsXpFi/w==",
+      "type": "package",
+      "path": "mysqlconnector/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/MySqlConnector.dll",
+        "lib/net462/MySqlConnector.xml",
+        "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
+        "lib/net48/MySqlConnector.dll",
+        "lib/net48/MySqlConnector.xml",
+        "lib/net6.0/MySqlConnector.dll",
+        "lib/net6.0/MySqlConnector.xml",
+        "lib/net8.0/MySqlConnector.dll",
+        "lib/net8.0/MySqlConnector.xml",
+        "lib/net9.0/MySqlConnector.dll",
+        "lib/net9.0/MySqlConnector.xml",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
+        "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
+        "logo.png",
+        "mysqlconnector.2.4.0.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
     "Controlai.Applicacao/1.0.0": {
       "type": "project",
       "path": "../Controlai.Applicacao/Controlai.Applicacao.csproj",
@@ -116,11 +175,17 @@
       "type": "project",
       "path": "../Controlai.Dominio/Controlai.Dominio.csproj",
       "msbuildProject": "../Controlai.Dominio/Controlai.Dominio.csproj"
+    },
+    "Controlai.Infraestrutura/1.0.0": {
+      "type": "project",
+      "path": "../Controlai.Infraestrutura/Controlai.Infraestrutura.csproj",
+      "msbuildProject": "../Controlai.Infraestrutura/Controlai.Infraestrutura.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "Controlai.Applicacao >= 1.0.0",
+      "Controlai.Infraestrutura >= 1.0.0",
       "list >= 1.1.0"
     ]
   },
@@ -158,6 +223,9 @@
           "projectReferences": {
             "C:\\CONTROLAI\\Controlai\\Controlai.Applicacao\\Controlai.Applicacao.csproj": {
               "projectPath": "C:\\CONTROLAI\\Controlai\\Controlai.Applicacao\\Controlai.Applicacao.csproj"
+            },
+            "C:\\CONTROLAI\\Controlai\\Controlai.Infraestrutura\\Controlai.Infraestrutura.csproj": {
+              "projectPath": "C:\\CONTROLAI\\Controlai\\Controlai.Infraestrutura\\Controlai.Infraestrutura.csproj"
             }
           }
         }
