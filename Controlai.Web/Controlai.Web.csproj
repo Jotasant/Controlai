@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Controlai.Applicacao\Controlai.Applicacao.csproj" />
+    <ProjectReference Include="..\Controlai.Infraestrutura\Controlai.Infraestrutura.csproj" />
   </ItemGroup>
 
   <ItemGroup>
