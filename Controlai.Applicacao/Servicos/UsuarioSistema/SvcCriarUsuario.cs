@@ -2,6 +2,7 @@ namespace Applicacao.Servicos;
 
 using System;
 using Applicacao.DTOs;
+using Applicacao.Interfaces;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Dominio.Enums;
@@ -9,9 +10,9 @@ using Dominio.Enums;
 public class SvcCriarUsuario
 {
     private readonly IRepoUsuarioSistema _usuarioSistemaRepo;
-    private readonly SvcObterUsuario _obterUsuario;
+    private readonly ISvcObterUsuario _obterUsuario;
 
-    public SvcCriarUsuario(IRepoUsuarioSistema usuarioSistemaRepo, SvcObterUsuario obterusuario)
+    public SvcCriarUsuario(IRepoUsuarioSistema usuarioSistemaRepo, ISvcObterUsuario obterusuario)
     {
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterUsuario = obterusuario;
