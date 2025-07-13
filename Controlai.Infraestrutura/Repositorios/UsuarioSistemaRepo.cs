@@ -17,7 +17,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     }
 
 
-//MAPEAR USUÁRIO
+    //MAPEAR USUÁRIO
     private UsuarioSistema MapearUsuario(MySqlDataReader reader)
     {
         return new UsuarioSistema
@@ -34,7 +34,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         };
     }
     
-//CRIAR USUÁRIO
+    //CRIAR USUÁRIO
 
     public async Task<UsuarioSistema> CadastrarUsuario(UsuarioSistema usuario)
     {
@@ -70,7 +70,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     }
     
 
-//EDITAR USUARIO
+    //EDITAR USUARIO
 
     public async Task<UsuarioSistema> EditarUsuario(UsuarioSistema usuario)
     {
@@ -100,7 +100,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     }
 
 
-//EXCLUIR USUÁRIO
+    //EXCLUIR USUÁRIO
     public async Task ExcluirUsuario(int Id)
     {
         using var conn = _conexaoRepo.ObterConexao();
@@ -119,7 +119,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     }
     
 
-//OBTER USUÁRIO POR ID
+    //OBTER USUÁRIO POR ID
     public async Task<UsuarioSistema> ObterPorId(int Id)
     {
         using var conn = _conexaoRepo.ObterConexao();

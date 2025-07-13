@@ -7,6 +7,7 @@ using Applicacao.DTOs;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Dominio.Enums;
+using System.Linq;
 
 
 public class SvcObterUsuario
@@ -19,10 +20,12 @@ public class SvcObterUsuario
         _usuarioSistemaRepo = usuarioSistemaRepo;
     }
 
-    public async Task<IEnumerable<UsuarioSistema>> Obter(DtoUsuarioSistema dto)
+    public async Task<IEnumerable<DtoUsuarioSistema>> Obter(DtoUsuarioSistema dto)
     {
 
         var usuarios = new List<UsuarioSistema>();
+        var usuarioDtoList = new List<DtoUsuarioSistema>();
+
 
         switch (dto.Busca)
         {
@@ -85,7 +88,33 @@ public class SvcObterUsuario
                 throw new ArgumentException("Tipo de busca inválido.");
         }
 
-        return usuarios;
+        return usuarios.Select(u => MapearUsuario(u)).ToList();
+        
+        /*
+        foreach (var us in usuarios)
+        {
+            var usuarioDto = MapearUsuario(us);
+            usuarioDtoList.Add(usuarioDto);
+        }
+
+        return usuarioDtoList;
+        */
     }
 
+
+    private DtoUsuarioSistema MapearUsuario(UsuarioSistema usuariosistema)
+    {
+        return new DtoUsuarioSistema
+        (
+            Id: usuariosistema.Id,
+            Nome: usuariosistema.Nome!,
+            Usuario: usuariosistema.Usuario!,
+            Senha: usuariosistema.SenhaHash!,
+            Email: usuariosistema.Email!
+            )
+        {
+            isAdministrador = usuariosistema.isAdministrador,
+            DataDeCadastro = usuariosistema.DataDeCadastro
+        };
+    }
 }

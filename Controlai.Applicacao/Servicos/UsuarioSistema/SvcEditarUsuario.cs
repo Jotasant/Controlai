@@ -19,7 +19,9 @@ public class SvcEditarUsuarioSistema
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterUsuario = obterUsuario;
     }
-    public async Task<UsuarioSistema> EditarUsuario(DtoUsuarioSistema usuariodto)
+    
+    
+    public async Task<DtoUsuarioSistema> EditarUsuario(DtoUsuarioSistema usuariodto)
     {
 
         if (usuariodto.Usuario == null) throw new Exception("Nome de usuario Obrigatório");
@@ -29,32 +31,43 @@ public class SvcEditarUsuarioSistema
 
         usuariodto.Busca = Dominio.Enums.TipoDeBusca.PorId;
 
-        List<UsuarioSistema> usuarioExistenteList = (await _obterUsuario.Obter(usuariodto)).ToList();
+        List<DtoUsuarioSistema> usuarioExistenteList = (await _obterUsuario.Obter(usuariodto)).ToList();
         var usuarioExistente = usuarioExistenteList.FirstOrDefault();
-        
+
         if (usuarioExistente == null) throw new Exception("Usuário não encontrado");
 
-        var usuario = SvcComparador.CompararObjetos<UsuarioSistema, DtoUsuarioSistema>(usuarioExistente, usuariodto);
+        var usuario = SvcComparador.CompararObjetos(usuarioExistente, usuariodto);
 
         if (usuario) throw new Exception("Nenhuma alteração detectada");
 
-        else
-        {
-            UsuarioSistema usuarioSistema = new UsuarioSistema
+        UsuarioSistema usuarioSistema = new UsuarioSistema
             (
             Nome: usuariodto.Nome,
             Usuario: usuariodto.Usuario,
             SenhaHash: usuariodto.Senha,
             Email: usuariodto.Email
             )
-            {
+        {
             isAdministrador = usuariodto.isAdministrador,
             DataDeCadastro = usuariodto.DataDeCadastro
-            };
+        };
 
-            await _usuarioSistemaRepo.EditarUsuario(usuarioSistema);
+        var usuarioeditado = await _usuarioSistemaRepo.EditarUsuario(usuarioSistema);
 
-            return usuarioSistema;
-        }
-    }        
-}
+        DtoUsuarioSistema dtoUsuarioSistema = new DtoUsuarioSistema
+            (
+            Id: usuarioeditado.Id,
+            Nome: usuarioeditado.Nome!,
+            Usuario: usuarioeditado.Usuario!,
+            Senha: usuarioeditado.SenhaHash!,
+            Email: usuarioeditado.Email!
+            )
+        {
+            isAdministrador = usuarioeditado.isAdministrador,
+            DataDeCadastro = usuarioeditado.DataDeCadastro
+        };
+
+        return dtoUsuarioSistema;
+    }
+}        
+
