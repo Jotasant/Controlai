@@ -8,6 +8,7 @@ namespace Dominio.Enums
         PorId,
         PorDataDeCadastro,
         PorPerfil,
+        PorQualquer,
         Todos
     }
 }

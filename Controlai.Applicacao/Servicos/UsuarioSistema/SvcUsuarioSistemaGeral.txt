@@ -1,9 +1,10 @@
-namespace Applicacao.Servicos;
+/*namespace Applicacao.Servicos;
 
 using Applicacao.DTOs;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Dominio.Enums;
+
 
 public class SvcUsuarioSistema
 {
@@ -52,35 +53,41 @@ public class SvcUsuarioSistema
             _usuarioSistemaRepo.CadastrarUsuario(usuario);
         }
     }
-    public UsuarioSistema EditarUsuario(DtoUsuarioSistema usuariodto)
+    public async Task<UsuarioSistema> EditarUsuario(DtoUsuarioSistema usuariodto)
     {
-        
+
         if (usuariodto.Usuario == null) throw new Exception("Nome de usuario Obrigatório");
         if (usuariodto.Nome == null) throw new Exception("Nome obrigatório");
         if (usuariodto.Email == null) throw new Exception("Email obrigatório");
         if (usuariodto.Senha == null) throw new Exception("Senha obrigatório");
 
-        UsuarioSistema usuarioExistente = _usuarioSistemaRepo.ObterPorId(usuariodto.Id).Result;
-
-
+        UsuarioSistema usuarioExistente = await _usuarioSistemaRepo.ObterPorId(usuariodto.Id);
 
 
         if (usuarioExistente == null) throw new Exception("Usuário não encontrado");
-        if (usuariodto == usuarioExistente) throw new Exception("Nenhuma alteração detectada");
 
-        UsuarioSistema usuario = new UsuarioSistema
-        (
+        var usuario = SvcComparador.CompararObjetos<UsuarioSistema, DtoUsuarioSistema>(usuarioExistente, usuariodto);
+
+        if (usuario) throw new Exception("Nenhuma alteração detectada");
+
+        else
+        {
+            UsuarioSistema usuarioSistema = new UsuarioSistema
+            (
             Nome: usuariodto.Nome,
             Usuario: usuariodto.Usuario,
             SenhaHash: usuariodto.Senha,
             Email: usuariodto.Email
-        )
-        {
+            )
+            {
             isAdministrador = usuariodto.isAdministrador,
             DataDeCadastro = usuariodto.DataDeCadastro
-        };
-        _usuarioSistemaRepo.EditarUsuario(usuario);
+            };
 
+            _usuarioSistemaRepo.EditarUsuario(usuarioSistema);
+
+            return usuarioSistema;
+        }
     }
 
     public void ExcluirUsuario(int id)
@@ -142,3 +149,4 @@ public async Task<IEnumerable<UsuarioSistema>> Obter(DtoUsuarioSistema dto)
         return usuarios;
     }
 }
+*/
