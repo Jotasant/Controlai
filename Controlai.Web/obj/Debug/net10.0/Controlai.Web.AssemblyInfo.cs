@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Controlai.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22e954e6825ff92e93c5dfd0cc7420061abcf153")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75041c26ed79fd5767177a6ccd9a6a785e4d3ca9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Controlai.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Controlai.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
