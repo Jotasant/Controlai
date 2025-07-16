@@ -17,6 +17,8 @@ public class SvcCriarUsuario
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterUsuario = obterusuario;
     }
+    
+
     public async Task<DtoUsuarioSistema> CriarUsuario(DtoUsuarioSistema usuariodto)
     {
         if (usuariodto.Usuario == null) throw new Exception("Nome de usuario Obrigatório");
@@ -24,44 +26,60 @@ public class SvcCriarUsuario
         else if (usuariodto.Email == null) throw new Exception("Email obrigatório");
         else if (usuariodto.Senha == null) throw new Exception("Senha obrigatório");
 
-        usuariodto.Busca = TipoDeBusca.PorQualquer;
-
-        var usuarioexistente = await _obterUsuario.Obter(usuariodto);
-
-        if (usuarioexistente == null)
+        var usuarioExistentePorNomeUsuario = await _usuarioSistemaRepo.ObterPorUsuario(usuariodto.Usuario);
+        if (usuarioExistentePorNomeUsuario != null)
         {
-            UsuarioSistema usuario = new UsuarioSistema
-            (
-                Nome: usuariodto.Nome,
-                Usuario: usuariodto.Usuario,
-                SenhaHash: usuariodto.Senha,
-                Email: usuariodto.Email
-            )
-            {
-                isAdministrador = usuariodto.isAdministrador,
-                DataDeCadastro = usuariodto.DataDeCadastro
-            };
-
-            var usuariocriado = await _usuarioSistemaRepo.CadastrarUsuario(usuario);
-            if (usuariocriado.Id == 0) throw new Exception("Usuario não foi criado!");
-
-            DtoUsuarioSistema usuarioDto = new DtoUsuarioSistema
-            (
-                Id: usuariocriado.Id,
-                Nome: usuariocriado.Nome!,
-                Usuario: usuariocriado.Usuario!,
-                Senha: usuariocriado.SenhaHash!,
-                Email: usuariocriado.Email!
-            )
-            {
-                isAdministrador = usuariocriado.isAdministrador,
-                DataDeCadastro = usuariocriado.DataDeCadastro
-            };
-            return usuarioDto;
+            throw new Exception("Nome de usuário já existe. Por favor, escolha outro.");
         }
-        else
+
+        var usuarioExistentePorEmail = await _usuarioSistemaRepo.ObterPorEmail(usuariodto.Email);
+        if (usuarioExistentePorEmail != null)
         {
-            throw new Exception("Usuário existente!");
+            throw new Exception("Email já cadastrado. Por favor, use outro email.");
         }
+
+        //var usuarioexistente = await _usuarioSistemaRepo.ObterPorEmail(usuariodto.Email);
+
+        var usuario = SvcTransformacao.DtoForUsuarioSistema(usuariodto);
+
+        if (string.IsNullOrWhiteSpace(usuario.SenhaHash)) throw new Exception("Erro no processo de criação");
+
+        usuario.SenhaHash = SvcCryptSenha.GerarHash(usuario.SenhaHash);
+
+        //if (!SvcCryptSenha.RegexVerify(usuario.SenhaHash)) SvcCryptSenha.GerarHash(usuario.SenhaHash);
+/*
+                        UsuarioSistema usuario = new UsuarioSistema
+                        (
+                            Nome: usuariodto.Nome,
+                            Usuario: usuariodto.Usuario,
+                            SenhaHash: SvcCryptSenha.GerarHash(usuariodto.Senha),
+                            Email: usuariodto.Email
+                        )
+                        {
+                            isAdministrador = usuariodto.isAdministrador,
+                            DataDeCadastro = usuariodto.DataDeCadastro
+                        };
+                */
+        var usuariocriado = await _usuarioSistemaRepo.CadastrarUsuario(usuario);
+
+        if (usuariocriado == null || usuariocriado.Id == 0) throw new Exception("Usuário não foi criado!");
+
+        var usuarioDto = SvcTransformacao.UsuarioSistemaforDto(usuariocriado);
+/*
+        DtoUsuarioSistema usuarioDto = new DtoUsuarioSistema
+        (
+            Id: usuariocriado.Id,
+            Nome: usuariocriado.Nome!,
+            Usuario: usuariocriado.Usuario!,
+            Email: usuariocriado.Email!
+        )
+        {
+            isAdministrador = usuariocriado.isAdministrador,
+            DataDeCadastro = usuariocriado.DataDeCadastro
+        };
+*/
+        return usuarioDto;
+
+        //throw new Exception("Erro de execução!");
     }
 }

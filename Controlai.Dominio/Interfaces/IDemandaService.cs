@@ -1,4 +1,4 @@
-﻿namespace Dominio.interfaces;
+﻿namespace Dominio.Interfaces;
 
 using Dominio.Models;
 

@@ -3,15 +3,16 @@ namespace Applicacao.Servicos;
 using System;
 using Dominio.Interfaces;
 using Applicacao.DTOs;
+using Applicacao.Interfaces;
 using Dominio.Enums;
 
 
 public class SvcExcluirUsuario
 {
     private readonly IRepoUsuarioSistema _usuarioSistemaRepo;
-    private readonly SvcObterUsuario _obterusuario;
+    private readonly ISvcObterUsuario _obterusuario;
 
-    public SvcExcluirUsuario(IRepoUsuarioSistema usuarioSistemaRepo, SvcObterUsuario obterusuario)
+    public SvcExcluirUsuario(IRepoUsuarioSistema usuarioSistemaRepo, ISvcObterUsuario obterusuario)
     {
         _usuarioSistemaRepo = usuarioSistemaRepo;
         _obterusuario = obterusuario;
@@ -28,13 +29,12 @@ public class SvcExcluirUsuario
         dtousuarioSistema.Busca = TipoDeBusca.PorId;
 
         List<DtoUsuarioSistema> usuarioList = (await _obterusuario.Obter(dtousuarioSistema)).ToList();
-        if (usuarioList == null || !usuarioList.Any()) throw new Exception("Usuário não informado");
+        if (usuarioList == null || !usuarioList.Any()) throw new Exception("Usuário não encontrado");
 
-        DtoUsuarioSistema usuario = usuarioList.First();
-
-        bool iguais = SvcComparador.CompararObjetos(usuario, dtousuarioSistema);
+        //DtoUsuarioSistema usuario = usuarioList.First();
+        //bool iguais = SvcComparador.CompararObjetos(usuario, dtousuarioSistema);
         
-        if (!iguais) throw new Exception("Os dados informados diferem do registro atual do usuário. Exclusão cancelada por segurança.");
+        //if (!iguais) throw new Exception("Os dados informados diferem do registro atual do usuário. Exclusão cancelada por segurança.");
 
         await _usuarioSistemaRepo.ExcluirUsuario(dtousuarioSistema.Id);
     }
