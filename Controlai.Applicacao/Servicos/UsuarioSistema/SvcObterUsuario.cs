@@ -70,36 +70,12 @@ public class SvcObterUsuario : ISvcObterUsuario
                 usuarios = await _usuarioSistemaRepo.ObterTodos();
                 break;
 
-            case TipoDeBusca.PorQualquer:
-
-                //Por Usuario
-                if (dto.Usuario != null)
-                {
-                    var usuarioPorUsuarioQualquer = await _usuarioSistemaRepo.ObterPorUsuario(dto.Usuario);
-                    if (usuarioPorUsuarioQualquer != null) usuarios.Add(usuarioPorUsuarioQualquer);
-                }
-                else if (dto.Email != null)
-                {
-                    var usuarioPorEmailQualquer = await _usuarioSistemaRepo.ObterPorEmail(dto.Email);
-                    if (usuarioPorEmailQualquer != null) usuarios.Add(usuarioPorEmailQualquer);
-                }
-                break;
-
             default:
                 throw new ArgumentException("Tipo de busca inválido.");
         }
 
         return usuarios.Select(u => MapearUsuario(u)).ToList();
         
-        /*
-        foreach (var us in usuarios)
-        {
-            var usuarioDto = MapearUsuario(us);
-            usuarioDtoList.Add(usuarioDto);
-        }
-
-        return usuarioDtoList;
-        */
     }
 
 

@@ -1,5 +1,7 @@
 ﻿namespace Dominio.Models;
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class UsuarioSistema
 {
     public DateTime DataDeNascimento { get; set; }
@@ -27,33 +29,46 @@ public class UsuarioSistema
     public DateTime DataDeCadastro { get; set; } // Data de cadastro do usuário
     public string? SenhaHash { get; set; } // Senha do usuário
     public string? Email { get; set; } // Email do usuário
+
     private UsuarioSistema() { }
 
-    public UsuarioSistema(string Nome, string Usuario, string Rua, string NumeroResidencial, string Bairro, string Cidade, string Estado, string CEP, string Email = "" ) 
-    {
-        this.Nome = Nome;
-        this.Usuario = Usuario;
-        this.Rua = Rua;
-        this.NumeroResidencial = NumeroResidencial;
-        this.Bairro = Bairro;
-        this.Cidade = Cidade;
-        this.Estado = Estado;
-        this.CEP = CEP;
-        this.Email = Email;
+    /*    public UsuarioSistema(string Nome, string Usuario, string Rua, string NumeroResidencial, string Bairro, string Cidade, string Estado, string CEP, string Email) 
+        {
 
+            this.Nome = Nome == null ? throw new Exception ("Nome Obrigatório") : Nome;
+            this.Usuario = Usuario == null ? throw new Exception ("Usuario Obrigatório") : Usuario;
+            this.Rua = Rua == null ? throw new Exception ("Rua Obrigatório") : Rua; ;
+            this.NumeroResidencial = NumeroResidencial == null ? throw new Exception ("NumeroResidencial Obrigatório") : NumeroResidencial;
+            this.Bairro = Bairro == null ? throw new Exception ("Bairro Obrigatório") : Bairro;
+            this.Cidade = Cidade == null ? throw new Exception ("Cidade Obrigatório") : Cidade;
+            this.Estado = Estado == null ? throw new Exception ("Estado Obrigatório") : Estado;
+            this.CEP = CEP == null ? throw new Exception ("CEP Obrigatório") : CEP;
+            this.Email = Email == null ? throw new Exception ("Email Obrigatório") : Email;
 
-        DataDeCadastro = DateTime.Now;
+            TimeZoneInfo brasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+            this.DataDeCadastro = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, brasilia);
 
-        SenhaHash = string.Empty; // Inicializa SenhaHash como vazio
-    }
+            SenhaHash = string.Empty; // Inicializa SenhaHash como vazio
+        }
+    */
     public UsuarioSistema(string Nome, string Usuario, string SenhaHash, string Email)
     {
-        this.Nome = Nome;
-        this.Usuario = Usuario;
-        this.Email = Email;
+        this.Nome = Nome == null ? throw new Exception("Nome Obrigatório") : Nome;
+        this.Usuario = Usuario == null ? throw new Exception("Usuario Obrigatório") : Usuario;
+        this.Email = Email == null ? throw new Exception("Email Obrigatório") : Email;
 
-        DataDeCadastro = DateTime.Now;
+        TimeZoneInfo brasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+        this.DataDeCadastro = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, brasilia);
 
         this.SenhaHash = SenhaHash;
+    }
+        public UsuarioSistema(string Nome, string Usuario, string Email)
+    {
+        this.Nome = Nome == null ? throw new Exception ("Nome Obrigatório") : Nome;
+        this.Usuario = Usuario == null ? throw new Exception ("Usuario Obrigatório") : Usuario;
+        this.Email = Email == null ? throw new Exception ("Email Obrigatório") : Email;
+
+        TimeZoneInfo brasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+        this.DataDeCadastro = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, brasilia);
     }
 }

@@ -18,10 +18,10 @@ public class SvcAutenticarUsuario
         _obterusuario = svcObterUsuario;
     }
 
-    public async Task<bool> AutenticarUsuario(DtoUsuarioSistema dtoUsuarioSistema)
+    public async Task<DtoUsuarioSistema> AutenticarUsuario(DtoUsuarioSistema dtoUsuarioSistema)
     {
         if (string.IsNullOrWhiteSpace(dtoUsuarioSistema.Senha)) throw new Exception("Senha precisa ter conteúdo");
-        dtoUsuarioSistema.Busca = TipoDeBusca.PorQualquer;
+        dtoUsuarioSistema.Busca = TipoDeBusca.PorEmail;
 
         var listUsuario = await _obterusuario.Obter(dtoUsuarioSistema);
         var usuario = listUsuario.FirstOrDefault();
@@ -29,7 +29,10 @@ public class SvcAutenticarUsuario
         if (usuario == null) throw new Exception("Usuário não encontrado");
         if (usuario.Senha == null) throw new Exception("Senha não encontrada");
 
-        return SvcCryptSenha.VerificarHash(dtoUsuarioSistema.Senha, usuario.Senha);
+        if (SvcCryptSenha.VerificarHash(dtoUsuarioSistema.Senha, usuario.Senha)) return usuario;
+
+        throw new Exception("Credenciais incorretas");
+
     }
             
 }

@@ -64,7 +64,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         usuario.Id = (int)cmd.LastInsertedId;
 
         if (linhasAfetadas == 0)
-            throw new Exception("Erro ao cadastrar usuário.");
+            return null!;
 
         return usuario;
     }
@@ -78,23 +78,46 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
 
         using var conn = _conexaoRepo.ObterConexao();
         await conn.OpenAsync();
+        int linhasAfetadas = 0;
 
-        using var cmd = new MySqlCommand(
+        if (string.IsNullOrWhiteSpace(usuario.SenhaHash))
+        {
+            using var cmd = new MySqlCommand(
+                @"UPDATE UsuarioSistema 
+            SET Nome = @Nome, isAdministrador = @isAdministrador, Usuario = @Usuario, DataDeCadastro = @DataDeCadastro, Email = @Email 
+            WHERE Id = @Id", conn);
+
+
+            cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
+            cmd.Parameters.AddWithValue("@isAdministrador", usuario.isAdministrador);
+            cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario);
+            cmd.Parameters.AddWithValue("@DataDeCadastro", usuario.DataDeCadastro);
+            cmd.Parameters.AddWithValue("@Email", usuario.Email);
+            cmd.Parameters.AddWithValue("@Id", usuario.Id);
+
+            linhasAfetadas = await cmd.ExecuteNonQueryAsync();
+        }
+        if (!string.IsNullOrWhiteSpace(usuario.SenhaHash))
+        {
+            using var cmd = new MySqlCommand(
             @"UPDATE UsuarioSistema 
             SET Nome = @Nome, isAdministrador = @isAdministrador, Usuario = @Usuario, DataDeCadastro = @DataDeCadastro, SenhaHash = @SenhaHash, Email = @Email 
             WHERE Id = @Id", conn);
 
-        cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
-        cmd.Parameters.AddWithValue("@isAdministrador", usuario.isAdministrador);
-        cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario);
-        cmd.Parameters.AddWithValue("@DataDeCadastro", usuario.DataDeCadastro);
-        cmd.Parameters.AddWithValue("@SenhaHash", usuario.SenhaHash);
-        cmd.Parameters.AddWithValue("@Email", usuario.Email);
 
-        int linhasAfetadas = await cmd.ExecuteNonQueryAsync();
+            cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
+            cmd.Parameters.AddWithValue("@isAdministrador", usuario.isAdministrador);
+            cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario);
+            cmd.Parameters.AddWithValue("@DataDeCadastro", usuario.DataDeCadastro);
+            cmd.Parameters.AddWithValue("@SenhaHash", usuario.SenhaHash);
+            cmd.Parameters.AddWithValue("@Email", usuario.Email);
+            cmd.Parameters.AddWithValue("@Id", usuario.Id);
+            
+            linhasAfetadas = await cmd.ExecuteNonQueryAsync();
+        }
 
         if (linhasAfetadas == 0)
-            throw new Exception("Erro ao editar usuário.");
+            return null!;
 
         return usuario;
     }
@@ -140,8 +163,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
             return usuario;
         }
 
-
-        throw new Exception("Nenhum usuário encontrado.");
+        return null!;
     }
 
     //OBTER USUÁRIO POR NOME
@@ -168,7 +190,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         }
 
         if (!listaUsuario.Any())
-            throw new Exception("Nenhum usuário encontrado.");
+            return null!;
 
         return listaUsuario;
     }
@@ -197,7 +219,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         }
 
         if (!listaUsuario.Any())
-            throw new Exception("Nenhum usuário encontrado.");
+            return null!;
 
         return listaUsuario;
     }
@@ -224,7 +246,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
             return usuarioreader;
         }
 
-        else { throw new Exception("Usuario não encontrado"); }
+        return null!;
     }
 
     //OBTER USUÁRIO POR DATA DE CADASTRO
@@ -251,7 +273,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         }
 
         if (!listaUsuario.Any())
-            throw new Exception("Nenhum usuário encontrado.");
+            return null!;
 
 
         return listaUsuario;
@@ -263,6 +285,8 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
     {
         using var conn = _conexaoRepo.ObterConexao();
         await conn.OpenAsync();
+        
+    
 
         using var cmd = new MySqlCommand(
             @"SELECT * FROM UsuarioSistema
@@ -279,7 +303,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
             return usuario;
         }
 
-        throw new Exception("Usuario não encontrado");
+        return null!;
     }
     
 
@@ -301,7 +325,7 @@ public class RepoUsuarioSistema : IRepoUsuarioSistema
         }
 
         if (!listaUsuario.Any())
-            throw new Exception("Nenhum usuário encontrado.");
+            return null!;
 
         return listaUsuario;
     }
