@@ -11,8 +11,8 @@
           "Controlai.Applicacao": "1.0.0",
           "Controlai.Infraestrutura": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.7",
-          "System.ComponentModel.Annotations": "5.0.0",
           "Swashbuckle.AspNetCore": "9.0.3",
+          "System.ComponentModel.Annotations": "5.0.0",
           "List": "1.1.0"
         },
         "runtime": {
