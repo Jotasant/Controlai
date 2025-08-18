@@ -1,0 +1,296 @@
+{
+  "format": 1,
+  "restore": {
+    "/var/controlai/src/UserService/Controlai.Web/Controlai.Web.csproj": {}
+  },
+  "projects": {
+    "/var/controlai/src/UserService/Controlai.Applicacao/Controlai.Applicacao.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/controlai/src/UserService/Controlai.Applicacao/Controlai.Applicacao.csproj",
+        "projectName": "Controlai.Applicacao",
+        "projectPath": "/var/controlai/src/UserService/Controlai.Applicacao/Controlai.Applicacao.csproj",
+        "packagesPath": "/home/jsantos/.nuget/packages/",
+        "outputPath": "/var/controlai/src/UserService/Controlai.Applicacao/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jsantos/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj": {
+                "projectPath": "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jsantos/.dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj",
+        "projectName": "Controlai.Dominio",
+        "projectPath": "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj",
+        "packagesPath": "/home/jsantos/.nuget/packages/",
+        "outputPath": "/var/controlai/src/UserService/Controlai.Dominio/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jsantos/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jsantos/.dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/var/controlai/src/UserService/Controlai.Infraestrutura/Controlai.Infraestrutura.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/controlai/src/UserService/Controlai.Infraestrutura/Controlai.Infraestrutura.csproj",
+        "projectName": "Controlai.Infraestrutura",
+        "projectPath": "/var/controlai/src/UserService/Controlai.Infraestrutura/Controlai.Infraestrutura.csproj",
+        "packagesPath": "/home/jsantos/.nuget/packages/",
+        "outputPath": "/var/controlai/src/UserService/Controlai.Infraestrutura/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jsantos/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj": {
+                "projectPath": "/var/controlai/src/UserService/Controlai.Dominio/Controlai.Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jsantos/.dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/var/controlai/src/UserService/Controlai.Web/Controlai.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/controlai/src/UserService/Controlai.Web/Controlai.Web.csproj",
+        "projectName": "Controlai.Web",
+        "projectPath": "/var/controlai/src/UserService/Controlai.Web/Controlai.Web.csproj",
+        "packagesPath": "/home/jsantos/.nuget/packages/",
+        "outputPath": "/var/controlai/src/UserService/Controlai.Web/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jsantos/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/var/controlai/src/UserService/Controlai.Applicacao/Controlai.Applicacao.csproj": {
+                "projectPath": "/var/controlai/src/UserService/Controlai.Applicacao/Controlai.Applicacao.csproj"
+              },
+              "/var/controlai/src/UserService/Controlai.Infraestrutura/Controlai.Infraestrutura.csproj": {
+                "projectPath": "/var/controlai/src/UserService/Controlai.Infraestrutura/Controlai.Infraestrutura.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwTBearer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "list": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/jsantos/.dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
