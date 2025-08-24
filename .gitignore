@@ -1,0 +1,46 @@
+bin/
+obj/
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider IDE settings
+.idea/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# ASP.NET Core
+wwwroot/
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# Visual Studio temporary files
+*.tmp
+*.cache
+*.bak
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# JetBrains Rider
+.idea/
+
+# Rider caches
+.idea/.idea.*
+.idea/.name
+.idea/.workspace
+.idea/.iml
